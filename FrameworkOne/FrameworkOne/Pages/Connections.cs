@@ -19,9 +19,30 @@ namespace FrameworkOne
         public IWebElement DeleteConfirmationMessage => Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-dialog-message'][contains(text(),'Are you sure you want to delete this record?')]")));
         public IWebElement NewConnectionButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-add']"));
         public IWebElement NewConnectionMenuHeader => Driver.FindElement(By.XPath("//div[contains(text(),'New Connection')]"));
-        public IWebElement NameField => Driver.FindElements(By.ClassName("dx-texteditor-input"))[0];
-        public IWebElement ServerField => Driver.FindElements(By.ClassName("dx-texteditor-input"))[1];
-        public IWebElement DatabaseField => Driver.FindElements(By.ClassName("dx-texteditor-input"))[2];
+        public IWebElement NameField
+        {
+            get
+            {
+                var nameField = Driver.FindElements(By.ClassName("dx-texteditor-input"))[0];
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(nameField));
+            }
+        }
+        public IWebElement ServerField
+        {
+            get
+            {
+                var serverField = Driver.FindElements(By.ClassName("dx-texteditor-input"))[1];
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(serverField));
+            }
+        }
+        public IWebElement DatabaseField
+        {
+            get
+            {
+                var descField = Driver.FindElements(By.ClassName("dx-texteditor-input"))[2];
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(descField));
+            }
+        }
         public IWebElement SaveButton => Driver.FindElement(By.XPath("//div[@aria-label='Save']"));
         public IWebElement LoadingWidget
         {
@@ -36,11 +57,8 @@ namespace FrameworkOne
         internal void CreateNewConnection(string name, string server, string database)
         {
             NewConnectionButton.Click();
-            NameField.Click();
             NameField.SendKeys(name);
-            ServerField.Click();
             ServerField.SendKeys(server);
-            DatabaseField.Click();
             DatabaseField.SendKeys(database);
             SaveButton.Click();
         }

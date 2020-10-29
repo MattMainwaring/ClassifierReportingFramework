@@ -6,7 +6,13 @@ namespace FrameworkOne
 {
     public class Home : BasePage
     {
-        public bool IsLoaded => Driver.FindElement(By.Id("recentContainer")).Displayed;
+        public bool IsLoaded
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("recentContainer"))).Displayed;
+            }
+        }
         public string MenuSize => Driver.FindElement(By.XPath("//div[@class='dx-drawer-panel-content']")).GetAttribute("style");
         public IWebElement ManageButton
         {

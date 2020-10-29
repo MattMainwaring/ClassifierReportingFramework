@@ -20,7 +20,13 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("dx-datagrid-search-text"))).Text;
             }
         }
-        public IWebElement ExpandButton => Driver.FindElement(By.ClassName("dx-datagrid-group-closed"));
+        public IWebElement ExpandButton
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("dx-datagrid-group-closed")));
+            }
+        }
         public IWebElement ExpandedMenu
         {
             get
