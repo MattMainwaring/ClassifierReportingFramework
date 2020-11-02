@@ -51,6 +51,9 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-loadpanel-indicator dx-loadindicator dx-widget']")));
             }
         }
+        public IWebElement NameColumn => Driver.FindElement(By.Id("dx-col-1"));
+        public IWebElement SortUpArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-up"));
+        public IWebElement SortDownArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-down"));
 
         public Connections(IWebDriver driver) : base(driver) { }
 

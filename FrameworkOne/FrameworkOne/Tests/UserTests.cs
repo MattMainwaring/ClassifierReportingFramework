@@ -12,7 +12,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks on a user, asserts that the available permissions page loaded.")]
+        [Description("Clicks the administrator user, asserts that the available permissions page loaded.")]
         public void TCID1()
         {
             Users.UserAdministrator.Click();
@@ -37,12 +37,20 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("")]
+        [Description("Clicks the administrator user, clicks the desired checkbox, asserts that the checkbox is checked.")]
         public void TCID4()
         {
             Users.UserAdministrator.Click();
             Users.Checkbox5.Click();
             Assert.AreEqual(Users.Checkbox5.GetAttribute("aria-checked"), "true");
+        }
+
+        [TestMethod]
+        [Description("Clicks the delete button, asserts that the 'delete confirmation message' is displayed.")]
+        public void TCID5()
+        {
+            Users.DeleteButton.Click();
+            Assert.IsTrue(Users.DeleteConfirmationMessage.Displayed);
         }
     }
 }

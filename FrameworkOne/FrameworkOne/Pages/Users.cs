@@ -20,6 +20,14 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@aria-rowindex='5']//div[@role='checkbox']")));
             }
         }
+        public IWebElement DeleteButton => Driver.FindElement(By.CssSelector("a[title='Delete']"));
+        public IWebElement DeleteConfirmationMessage
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(text(),'Are you sure you want to delete this record?')]")));
+            }
+        }
 
         public Users(IWebDriver driver) : base(driver) { }
 

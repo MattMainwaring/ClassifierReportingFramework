@@ -12,7 +12,7 @@ namespace FrameworkOne.Tests
         }
         
         [TestMethod]
-        [Description("Clicks a dashboard, asserts that the dashboard loaded.")]
+        [Description("Clicks a dashboard, asserts that the correct dashboard is loaded.")]
         public void TCID1()
         {
             Dashboards.TestDashboardPanel.Click();
@@ -20,7 +20,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the edit button on a dashboard, asserts that the edit page loaded.")]
+        [Description("Clicks the edit button on a dashboard panel, asserts that the edit page is loaded.")]
         public void TCID2()
         {
             Dashboards.TestDashboardEditButton.Click();
@@ -28,7 +28,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the create button in the top right, asserts that the palette button is visible in the drop-down menu.")]
+        [Description("Clicks the 'create dashboard' button, asserts that the palette button (create new) is displayed.")]
         public void TCID3()
         {
             Dashboards.CreateDashboardButton.Click(); 
@@ -41,6 +41,16 @@ namespace FrameworkOne.Tests
         {
             Dashboards.TagFilterBar.Click();
             Assert.IsTrue(Dashboards.ExpandedTagFilterBar.Displayed);
+        }
+
+        [TestMethod]
+        [Description("Clicks the 'create dashboard' button, asserts that the 'close menu' button is displayed, clicks the 'close menu' button, asserts that it's no longer displayed.")]
+        public void TCID5()
+        {
+            Dashboards.CreateDashboardButton.Click();
+            Assert.IsTrue(Dashboards.CloseMenuButton.Displayed);
+            Dashboards.CloseMenuButton.Click();
+            Assert.IsFalse(Dashboards.CloseMenuButton.Displayed);
         }
     }
 }

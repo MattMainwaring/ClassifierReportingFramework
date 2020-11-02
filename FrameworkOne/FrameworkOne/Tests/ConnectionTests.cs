@@ -12,7 +12,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the test connection and asserts that the correct page loaded.")]
+        [Description("Clicks the test connection and asserts that the test connection content page is loaded.")]
         public void TCID1()
         {
             Connections.TestConnection.Click();
@@ -20,7 +20,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the delete button and asserts that the confirmation message is displayed.")]
+        [Description("Clicks the delete button and asserts that the 'delete confirmation message' is displayed.")]
         public void TCID2()
         {
             Connections.DeleteButton.Click();
@@ -28,7 +28,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the 'add new' button and asserts that the 'new connection' menu is displayed.")]
+        [Description("Clicks the 'add new connection' button and asserts that the 'add new connection' menu is displayed.")]
         public void TCID3()
         {
             Connections.NewConnectionButton.Click();
@@ -36,11 +36,21 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the 'add new' button, fills out the fields, clicks save and asserts that the loading widget is displayed.")]
+        [Description("Clicks the 'add new connection' button, fills out the text fields, clicks the save button and asserts that the loading widget is displayed.")]
         public void TCID4()
         {
             Connections.CreateNewConnection("TestName", "TestServer", "TestDatabase");
             Assert.IsTrue(Connections.LoadingWidget.Displayed);
+        }
+
+        [TestMethod]
+        [Description("Clicks the name column twice, asserting each time that the correct arrow icon is displayed (showing which way the connections are sorted).")]
+        public void TCID5()
+        {
+            Connections.NameColumn.Click();
+            Assert.IsTrue(Connections.SortUpArrow.Displayed);
+            Connections.NameColumn.Click();
+            Assert.IsTrue(Connections.SortDownArrow.Displayed);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the 'create new report' button, clicks the 'from template' button, asserts that the correct page loads.")]
+        [Description("Clicks the 'create new report' button, clicks the 'from template' button, asserts that the correct page loaded.")]
         public void TCID3()
         {
             Reports.CreateReportButton.Click();
@@ -37,8 +37,17 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the search bar, then asserts that the extended search bar is displayed.")]
+        [Description("Clicks the 'create new report' button, clicks the 'create new' button (palette icon), asserts that the correct page loaded.")]
         public void TCID4()
+        {
+            Reports.CreateReportButton.Click();
+            Reports.PaletteButton.Click();
+            Assert.IsTrue(Reports.NewReportWorkspace.Displayed);
+        }
+
+        [TestMethod]
+        [Description("Clicks the search bar, then asserts that the extended search bar is displayed.")]
+        public void TCID5()
         {
             Reports.TagFilterBar.Click();
             Assert.IsTrue(Reports.ExpandedTagFilterBar.Displayed);

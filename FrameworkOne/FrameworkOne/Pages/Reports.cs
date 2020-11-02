@@ -23,8 +23,8 @@ namespace FrameworkOne
         }
         public IWebElement SupplierReportEditButton => Driver.FindElement(By.Id("devextreme3"));
         public IWebElement SupplierReportEditPageTitle => Driver.FindElement(By.XPath("//div[@class='bj-page-header'][contains(text(),'SupplierReport')]"));
-        public IWebElement CreateReportButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-rowfield']")); // Needs ID
-        public IWebElement FromTemplateButton // Needs ID
+        public IWebElement CreateReportButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-rowfield']")); 
+        public IWebElement FromTemplateButton 
         {
             get
             {
@@ -33,7 +33,22 @@ namespace FrameworkOne
         }
         public IWebElement ReportTemplatesContainer => Driver.FindElement(By.Id("importReportsContainer"));
         public IWebElement TagFilterBar => Driver.FindElement(By.Id("reportTagsFilter"));
-        public IWebElement ExpandedTagFilterBar => Driver.FindElement(By.ClassName("dx-popup-content")); // Needs ID
+        public IWebElement ExpandedTagFilterBar => Driver.FindElement(By.ClassName("dx-popup-content"));
+        public IWebElement PaletteButton
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".dx-icon.dx-icon-palette")));
+            }
+        }
+        public IWebElement NewReportWorkspace
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".dxrd-surface-wrapper")));
+            }
+        }
+
 
         public Reports(IWebDriver driver) : base(driver) { }
 
@@ -44,4 +59,3 @@ namespace FrameworkOne
         }
     }
 }
-

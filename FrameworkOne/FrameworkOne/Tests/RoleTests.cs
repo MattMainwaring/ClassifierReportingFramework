@@ -12,7 +12,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the drop-down button, clicks the Users option, asserts that the Users page has loaded.")]
+        [Description("Clicks the drop-down menu, clicks the Users option, asserts that the Users page has loaded.")]
         public void TCID1()
         {
             Roles.DropDownMenu.Click();
@@ -21,7 +21,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the system manager role, asserts that the correct page loaded.")]
+        [Description("Clicks the system manager role, asserts that the correct page is displayed.")]
         public void TCID2()
         {
             Roles.SystemManagerRole.Click();
@@ -29,7 +29,7 @@ namespace FrameworkOne.Tests
         }  
 
         [TestMethod]
-        [Description("Clicks the description colum and asserts that the roles were sorted.")]
+        [Description("Clicks the description column and asserts that the roles were sorted.")]
         public void TCID3()
         {
             Assert.IsFalse(Roles.AreRolesSorted);
@@ -38,8 +38,17 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("Clicks the 'add new role' button, asserts that the new role menu is displayed.")]
+        [Description("Clicks the name column and asserts that the roles were sorted.")]
         public void TCID4()
+        {
+            Assert.IsFalse(Roles.AreRolesSorted);
+            Roles.NameColumn.Click();
+            Assert.IsTrue(Roles.AreRolesSorted);
+        }
+
+        [TestMethod]
+        [Description("Clicks the 'add new role' button, asserts that the new role menu is displayed.")]
+        public void TCID5()
         {
             Roles.NewRoleButton.Click();
             Assert.IsTrue(Roles.NewRoleMenuHeader.Displayed);

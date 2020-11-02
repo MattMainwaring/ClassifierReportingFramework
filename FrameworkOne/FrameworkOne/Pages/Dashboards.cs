@@ -24,7 +24,7 @@ namespace FrameworkOne
         }
         public IWebElement TestDashboardEditButton => Driver.FindElement(By.Id("devextreme4"));
         public IWebElement TestDashboardEditPageTitle => Driver.FindElement(By.XPath("//div[@class='bj-page-header'][contains(text(),'Order Country of Orgin Dashboard')]"));
-        public IWebElement CreateDashboardButton => Driver.FindElement(By.ClassName("dx-fa-button-icon")); // Needs ID
+        public IWebElement CreateDashboardButton => Driver.FindElement(By.ClassName("dx-fa-button-icon"));
         public IWebElement PaletteButton
         {
             get
@@ -33,7 +33,8 @@ namespace FrameworkOne
             }
         }
         public IWebElement TagFilterBar => Driver.FindElement(By.Id("dashboardFilterForm"));
-        public IWebElement ExpandedTagFilterBar => Driver.FindElement(By.ClassName("dx-popup-content")); // Needs ID
+        public IWebElement ExpandedTagFilterBar => Driver.FindElement(By.ClassName("dx-popup-content"));
+        public IWebElement CloseMenuButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-close"));
 
         public Dashboards(IWebDriver driver) : base(driver) { }
 

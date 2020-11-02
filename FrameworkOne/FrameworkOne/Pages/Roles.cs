@@ -40,7 +40,8 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("devextreme1")));
             }
         }
-        public IWebElement DescriptionColumn => Driver.FindElement(By.XPath("//td[@aria-label='Column Description']"));
+        public IWebElement DescriptionColumn => Driver.FindElement(By.Id("dx-col-2"));
+        public IWebElement NameColumn => Driver.FindElement(By.Id("dx-col-1"));
         public IWebElement NewRoleButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-add']"));
         public IWebElement NewRoleMenuHeader => Driver.FindElement(By.XPath("//div[contains(text(),'New Role')]"));
 

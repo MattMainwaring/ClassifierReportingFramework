@@ -33,15 +33,15 @@ namespace FrameworkOne
             {
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@class='dx-row dx-row-lines dx-master-detail-row']")));
             }
-        } // Needs ID
-        public IWebElement SearchBar => Driver.FindElement(By.ClassName("dx-texteditor-input")); // Needs ID
+        } 
+        public IWebElement SearchBar => Driver.FindElement(By.ClassName("dx-texteditor-input")); 
         public IWebElement CheckBox
         {
             get
             {
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@role='checkbox']")));
             }
-        } // Needs ID
+        } 
         public IWebElement DeleteButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-trash']"));
         public IWebElement DeleteConfirmationMessage
         {
@@ -50,6 +50,9 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(text(),'Are you sure you want to delete this pack?')]")));
             }
         }
+        public IWebElement PackNameColumn => Driver.FindElement(By.Id("dx-col-3"));
+        public IWebElement SortUpArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-up"));
+        public IWebElement SortDownArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-down"));
 
         public Packs(IWebDriver driver) : base(driver) { }
 
