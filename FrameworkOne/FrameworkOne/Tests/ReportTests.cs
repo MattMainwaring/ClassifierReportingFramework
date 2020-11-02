@@ -13,7 +13,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks a report, asserts that the report is loaded.")]
-        public void TCID1()
+        public void ViewSupplierReport()
         {
             Reports.SupplierReportPanel.Click();
             Assert.IsTrue(Reports.SupplierReportContent.Displayed);
@@ -21,7 +21,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the edit button on a report, asserts that the edit page is loaded.")]
-        public void TCID2()
+        public void EditSupplierReport()
         {
             Reports.SupplierReportEditButton.Click();
             Assert.IsTrue(Reports.SupplierReportEditPageTitle.Displayed);
@@ -29,7 +29,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'create new report' button, clicks the 'from template' button, asserts that the correct page loaded.")]
-        public void TCID3()
+        public void CreateNewReportFromTemplate()
         {
             Reports.CreateReportButton.Click();
             Reports.FromTemplateButton.Click();
@@ -38,7 +38,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'create new report' button, clicks the 'create new' button (palette icon), asserts that the correct page loaded.")]
-        public void TCID4()
+        public void CreateNewReportFromScratch()
         {
             Reports.CreateReportButton.Click();
             Reports.PaletteButton.Click();
@@ -47,7 +47,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the search bar, then asserts that the extended search bar is displayed.")]
-        public void TCID5()
+        public void SearchBarExpanded()
         {
             Reports.TagFilterBar.Click();
             Assert.IsTrue(Reports.ExpandedTagFilterBar.Displayed);

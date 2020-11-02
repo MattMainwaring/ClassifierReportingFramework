@@ -13,7 +13,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Checks that the expand button works.")]
-        public void TCID1()
+        public void ExpandButton()
         {
             Packs.ExpandButton.Click();
             Assert.IsTrue(Packs.ExpandedMenu.Displayed);
@@ -21,7 +21,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Searches a string, then asserts that the relevant text is highlighted on the page.")]
-        public void TCID2()
+        public void SearchTextHighlighted()
         {
             Packs.Search("Sample");
             Assert.AreEqual(Packs.HighlightedText, "Sample");
@@ -29,7 +29,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the expand button, clicks a checkbox (which un-ticks it), asserts that the checkbox is not ticked.")]
-        public void TCID3()
+        public void CheckboxUncheck()
         {
             Packs.ExpandButton.Click();
             Packs.CheckBox.Click();
@@ -38,7 +38,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the expand button, clicks the delete button, asserts that the delete confirmation message is displayed.")]
-        public void TCID4()
+        public void DeleteButtonConfirmation()
         {
             Packs.ExpandButton.Click();
             Packs.DeleteButton.Click();
@@ -47,7 +47,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'pack name' column twice, asserts each time that the correct sorting arrow is displayed.")]
-        public void TCID5()
+        public void PackNameColumnSorting()
         {
             Packs.PackNameColumn.Click();
             Assert.IsTrue(Packs.SortUpArrow.Displayed);

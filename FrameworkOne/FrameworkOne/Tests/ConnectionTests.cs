@@ -13,7 +13,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the test connection and asserts that the test connection content page is loaded.")]
-        public void TCID1()
+        public void ViewTestConnection()
         {
             Connections.TestConnection.Click();
             Assert.IsTrue(Connections.TestConnectionContent.Displayed);
@@ -21,7 +21,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the delete button and asserts that the 'delete confirmation message' is displayed.")]
-        public void TCID2()
+        public void DeleteButtonConfirmation()
         {
             Connections.DeleteButton.Click();
             Assert.IsTrue(Connections.DeleteConfirmationMessage.Displayed);
@@ -29,7 +29,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'add new connection' button and asserts that the 'add new connection' menu is displayed.")]
-        public void TCID3()
+        public void NewConnectionMenu()
         {
             Connections.NewConnectionButton.Click();
             Assert.IsTrue(Connections.NewConnectionMenuHeader.Displayed);
@@ -37,7 +37,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'add new connection' button, fills out the text fields, clicks the save button and asserts that the loading widget is displayed.")]
-        public void TCID4()
+        public void SaveNewConnection()
         {
             Connections.CreateNewConnection("TestName", "TestServer", "TestDatabase");
             Assert.IsTrue(Connections.LoadingWidget.Displayed);
@@ -45,7 +45,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the name column twice, asserting each time that the correct arrow icon is displayed (showing which way the connections are sorted).")]
-        public void TCID5()
+        public void NameColumnSorting()
         {
             Connections.NameColumn.Click();
             Assert.IsTrue(Connections.SortUpArrow.Displayed);

@@ -13,7 +13,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the Dashboards button and asserts that the dashboards was loaded.")]
-        public void TCID1()
+        public void LoadDashboardsPage()
         {
             Home.DashboardsButton.Click();
             Assert.IsTrue(Dashboards.IsLoaded);
@@ -21,7 +21,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the Reports button and asserts that the reports page was loaded.")]
-        public void TCID2()
+        public void LoadsReportsPage()
         {
             Home.ReportsButton.Click();
             Assert.IsTrue(Reports.IsLoaded);
@@ -29,7 +29,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the Packs button, clicks the Manage button and asserts that the packs page was loaded.")]
-        public void TCID3()
+        public void LoadPacksPage()
         {
             Home.PacksButton.Click();
             Home.ManageButton.Click();
@@ -38,7 +38,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the Roles button and asserts that the roles page was loaded.")]
-        public void TCID4()
+        public void LoadRolesPage()
         {
             Home.RolesButton.Click();
             Assert.IsTrue(Roles.IsLoaded);
@@ -46,7 +46,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the Connections button and asserts that the connections page was loaded.")]
-        public void TCID5()
+        public void LoadConnectionsPage()
         {
             Home.ConnectionsButton.Click();
             Assert.IsTrue(Connections.IsLoaded);
@@ -54,7 +54,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Asserts that the navigation-menu changes size when clicking the hide/expand button.")]
-        public void TCID6()
+        public void NavigationMenuResize()
         {
             var currentMenuSize = Home.MenuSize;
             Home.MenuButton.Click();
@@ -65,7 +65,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the Account button and asserts that the Logout option is displayed.")]
-        public void TCID7()
+        public void AccountButtonLogout()
         {
             Home.AccountButton.Click();
             Assert.IsTrue(Home.LogOutButton.Displayed);

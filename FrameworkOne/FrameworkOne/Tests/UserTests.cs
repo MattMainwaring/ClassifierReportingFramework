@@ -13,7 +13,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the administrator user, asserts that the available permissions page loaded.")]
-        public void TCID1()
+        public void ViewAdministratorUserPermissions()
         {
             Users.UserAdministrator.Click();
             Assert.IsTrue(Users.AvailablePermissionsPanel.Displayed);
@@ -21,7 +21,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'add new user' button, asserts that the lookup field is displayed.")]
-        public void TCID2()
+        public void AddNewUserLookupField()
         {
             Users.NewUserButton.Click();
             Assert.IsTrue(Users.NewUserPageHeader.Displayed);
@@ -29,7 +29,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'add new user' button, clicks the lookup field, asserts that the search icon is displayed.")]
-        public void TCID3()
+        public void LookupFieldSearchIcon()
         {
             Users.NewUserButton.Click();
             Users.LookupField.Click();
@@ -38,7 +38,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the administrator user, clicks the desired checkbox, asserts that the checkbox is checked.")]
-        public void TCID4()
+        public void PermissionsCheckboxChecked()
         {
             Users.UserAdministrator.Click();
             Users.Checkbox5.Click();
@@ -47,7 +47,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the delete button, asserts that the 'delete confirmation message' is displayed.")]
-        public void TCID5()
+        public void DeleteButtonConfirmation()
         {
             Users.DeleteButton.Click();
             Assert.IsTrue(Users.DeleteConfirmationMessage.Displayed);
