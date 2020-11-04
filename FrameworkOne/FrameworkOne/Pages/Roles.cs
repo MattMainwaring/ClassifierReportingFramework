@@ -32,7 +32,13 @@ namespace FrameworkOne
         }
         public IWebElement DropDownMenu => Driver.FindElement(By.ClassName("dx-dropdowneditor-icon"));
         public IWebElement UsersOption => Driver.FindElement(By.XPath("//div[@class='dx-item-content dx-list-item-content'][contains(text(),'Users')]"));
-        public IWebElement SystemManagerRole => Driver.FindElement(By.XPath("//tr[@class='dx-row dx-data-row dx-row-lines'][@aria-rowindex='4']"));
+        public IWebElement SystemManagerRole
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@class='dx-row dx-data-row dx-row-lines'][@aria-rowindex='4']")));
+            }
+        }
         public IWebElement SystemManagerRoleContent
         {
             get

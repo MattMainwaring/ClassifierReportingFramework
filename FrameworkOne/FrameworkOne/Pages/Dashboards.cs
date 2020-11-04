@@ -6,13 +6,7 @@ namespace FrameworkOne
 {
     public class Dashboards : BasePage
     {
-        public bool IsLoaded
-        {
-            get
-            {
-                return Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("bj-dashboards-Container"))).Displayed;
-            }
-        }
+        public bool IsLoaded => Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("bj-dashboards-Container"))).Displayed;
         public IWebElement HomeIcon => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-home']"));
         public IWebElement TestDashboardPanel => Driver.FindElement(By.Id("Test Dashboard"));
         public IWebElement TestDashboardHeader 

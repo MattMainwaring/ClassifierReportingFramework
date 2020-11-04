@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace FrameworkOne
@@ -11,6 +13,28 @@ namespace FrameworkOne
             get
             {
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("connectionsList"))).Displayed;
+            }
+        }
+        public bool AreAllChecked
+        {
+            get
+            {
+                try
+                {
+                    var wait = new WebDriverWait(Driver, TimeSpan.FromMilliseconds(300));
+                    wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-datagrid-checkbox-size dx-show-invalid-badge dx-checkbox dx-widget']")));
+
+                    if (Driver.FindElement(By.XPath("//div[@class='dx-datagrid-checkbox-size dx-show-invalid-badge dx-checkbox dx-widget']")).Enabled == true)
+                    {
+                        return false;
+                        // We use XPath here because the CssSelector equivalent will find all classes that contain our specified class-name, where-as XPath finds ONLY exact matches.
+                    }
+                    else
+                    {
+                        return true;
+                    }   
+                }
+                catch { return true; }
             }
         }
         public IWebElement TestConnection => Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//td[@role='gridcell'][contains(text(),'TestConnection')]")));
@@ -44,16 +68,63 @@ namespace FrameworkOne
             }
         }
         public IWebElement SaveButton => Driver.FindElement(By.XPath("//div[@aria-label='Save']"));
-        public IWebElement LoadingWidget
-        {
-            get
-            {
-                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-loadpanel-indicator dx-loadindicator dx-widget']")));
-            }
-        }
+        public IWebElement LoadingWidget => Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-loadpanel-indicator dx-loadindicator dx-widget']")));
         public IWebElement NameColumn => Driver.FindElement(By.Id("dx-col-1"));
         public IWebElement SortUpArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-up"));
         public IWebElement SortDownArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-down"));
+        public IWebElement NoDelete => Driver.FindElement(By.XPath("//span[@class='dx-button-text'][contains(text(),'No')]"));
+        public IWebElement AllCheckbox
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".dx-checkbox-icon")));
+            }
+        }
+        public IWebElement CustomerCheckbox
+        {
+            get
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(AllCheckbox));
+                return Driver.FindElements(By.CssSelector(".dx-datagrid-checkbox-size.dx-show-invalid-badge.dx-checkbox.dx-widget"))[0];
+            }
+        }
+        public IWebElement OrderCheckbox
+        {
+            get
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(AllCheckbox));
+                return Driver.FindElements(By.CssSelector(".dx-datagrid-checkbox-size.dx-show-invalid-badge.dx-checkbox.dx-widget"))[1];
+            }
+        }
+        public IWebElement OrderItemCheckbox
+        {
+            get
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(AllCheckbox));
+                return Driver.FindElements(By.CssSelector(".dx-datagrid-checkbox-size.dx-show-invalid-badge.dx-checkbox.dx-widget"))[2];
+            }
+        }
+        public IWebElement ProductCheckbox
+        {
+            get
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(AllCheckbox));
+                return Driver.FindElements(By.CssSelector(".dx-datagrid-checkbox-size.dx-show-invalid-badge.dx-checkbox.dx-widget"))[3];
+            }
+        }
+        public IWebElement SupplierCheckbox
+        {
+            get
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(AllCheckbox));
+                return Driver.FindElements(By.CssSelector(".dx-datagrid-checkbox-size.dx-show-invalid-badge.dx-checkbox.dx-widget"))[4];
+            }
+        }
+        public IWebElement ViewsTab => Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Views')]")));
+        public string CurrentSection => Driver.FindElements(By.CssSelector(".dx-item.dx-tab.dx-tab-selected span"))[0].Text;
+        public string CurrentTab => Driver.FindElements(By.CssSelector(".dx-item.dx-tab.dx-tab-selected span"))[1].Text;
+        public IWebElement PermissionsSection => Driver.FindElement(By.CssSelector(""));
+        public IWebElement ProceduresTab => Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Procedures')]")));
 
         public Connections(IWebDriver driver) : base(driver) { }
 
