@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading;
 
 namespace FrameworkOne.Tests
 {
@@ -22,7 +21,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the delete button and asserts that the 'delete confirmation message' is displayed.")]
-        public void DeleteButtonConfirmation()
+        public void DeleteConfirmation()
         {
             Connections.DeleteButton.Click();
             Assert.IsTrue(Connections.DeleteConfirmationMessage.Displayed);   
@@ -38,6 +37,15 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
+        [Description("")]
+        public void CustomStringButton()
+        {
+            Connections.NewConnectionButton.Click();
+            Connections.CustomStringButton.Click();
+            Assert.IsTrue(Connections.ConnectionStringField.Displayed);
+        }
+
+        [TestMethod]
         [Description("Clicks the name column twice, asserting each time that the correct arrow icon is displayed (showing which way the connections are sorted).")]
         public void NameColumnSorting()
         {
@@ -49,7 +57,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the 'add new connection' button, fills out the text fields, clicks the save button and asserts that the loading widget is displayed.")]
-        public void SaveNewConnection()
+        public void CreateAndSaveNewConnection()
         {
             Connections.CreateNewConnection("TestName", "TestServer", "TestDatabase");
             Assert.IsTrue(Connections.LoadingWidget.Displayed);
@@ -57,7 +65,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the test connection, clicks the 'all' checkbox twice, each time asserting that all checkboxes were checked and not checked.")]
-        public void AllCheckbox()
+        public void ClickAllCheckboxInTables()
         {
             Connections.TestConnection.Click();
             Connections.AllCheckbox.Click();
@@ -68,7 +76,7 @@ namespace FrameworkOne.Tests
 
         [TestMethod]
         [Description("Clicks the test connection, clicks the 'all' checkbox, clicks each individual checkbox, asserts they are all checked.")]
-        public void EachCheckbox()
+        public void ClickEachCheckboxInTables()
         {
             Connections.TestConnection.Click();
             Connections.AllCheckbox.Click();
@@ -81,37 +89,37 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("")]
-        public void CurrentTabTables()
+        [Description("Clicks the test connection and asserts that the tabs selected by default are 'data' and 'tables'.")]
+        public void CheckDefaultTabs()
         {
             Connections.TestConnection.Click();
+            Assert.AreEqual(Connections.CurrentSection, "DATA");
             Assert.AreEqual(Connections.CurrentTab, "TABLES");
         }
         [TestMethod]
-        [Description("")]
-        public void CurrentTabViews()
+        [Description("Clicks the test connection, clicks each individual sub-tab (under the data tab), each time asserting that the correct tab was selected.")]
+        public void ClickEachTab()
         {
             Connections.TestConnection.Click();
             Connections.ViewsTab.Click();
             Assert.AreEqual(Connections.CurrentTab, "VIEWS");
+            Connections.ProceduresTab.Click();
+            Assert.AreEqual(Connections.CurrentTab, "PROCEDURES");
             Connections.TablesTab.Click();
             Assert.AreEqual(Connections.CurrentTab, "TABLES");
         }
 
         [TestMethod]
-        [Description("")]
-        public void CurrentTabProcedures()
+        [Description("Clicks the test connection, clicks each individual upper-tab, each time asserting that the correct tab was selected.")]
+        public void ClickPermissionsTab ()
         {
             Connections.TestConnection.Click();
-            Connections.ProceduresTab.Click();
-            Assert.AreEqual(Connections.CurrentTab, "PROCEDURES");
-        }
-
-        [TestMethod]
-        [Description("")]
-        public void NewTest ()
-        {
-
+            Connections.PermissionsTab.Click();
+            Assert.AreEqual(Connections.CurrentSection, "PERMISSIONS");
+            Connections.ConnectionTab.Click();
+            Assert.AreEqual(Connections.CurrentSection, "CONNECTION");
+            Connections.DataTab.Click();
+            Assert.AreEqual(Connections.CurrentSection, "DATA");
         }
     }
 }

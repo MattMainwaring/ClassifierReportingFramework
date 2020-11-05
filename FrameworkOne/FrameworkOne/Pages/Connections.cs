@@ -37,10 +37,22 @@ namespace FrameworkOne
                 catch { return true; }
             }
         }
-        public IWebElement TestConnection => Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//td[@role='gridcell'][contains(text(),'TestConnection')]")));
+        public IWebElement TestConnection
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//td[@role='gridcell'][contains(text(),'TestConnection')]")));
+            }
+        }
         public IWebElement TestConnectionContent => Driver.FindElement(By.Id("devextreme0"));
         public IWebElement DeleteButton => Driver.FindElement(By.XPath("//a[@class='dx-link dx-link-delete dx-icon-trash dx-link-icon']"));
-        public IWebElement DeleteConfirmationMessage => Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-dialog-message'][contains(text(),'Are you sure you want to delete this record?')]")));
+        public IWebElement DeleteConfirmationMessage
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-dialog-message'][contains(text(),'Are you sure you want to delete this record?')]")));
+            }
+        }
         public IWebElement NewConnectionButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-add']"));
         public IWebElement NewConnectionMenuHeader => Driver.FindElement(By.XPath("//div[contains(text(),'New Connection')]"));
         public IWebElement NameField
@@ -68,7 +80,13 @@ namespace FrameworkOne
             }
         }
         public IWebElement SaveButton => Driver.FindElement(By.XPath("//div[@aria-label='Save']"));
-        public IWebElement LoadingWidget => Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-loadpanel-indicator dx-loadindicator dx-widget']")));
+        public IWebElement LoadingWidget
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='dx-loadpanel-indicator dx-loadindicator dx-widget']")));
+            }
+        }
         public IWebElement NameColumn => Driver.FindElement(By.Id("dx-col-1"));
         public IWebElement SortUpArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-up"));
         public IWebElement SortDownArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-down"));
@@ -122,10 +140,44 @@ namespace FrameworkOne
         }
         public string CurrentSection => Driver.FindElements(By.CssSelector(".dx-item.dx-tab.dx-tab-selected span"))[0].Text;
         public string CurrentTab => Driver.FindElements(By.CssSelector(".dx-item.dx-tab.dx-tab-selected span"))[1].Text;
-        public IWebElement PermissionsSection => Driver.FindElement(By.CssSelector(""));
-        public IWebElement ProceduresTab => Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Procedures')]")));
-        public IWebElement TablesTab => Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Tables')]")));
-        public IWebElement ViewsTab => Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Views')]")));
+        public IWebElement ProceduresTab
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Procedures')]")));
+            }
+        }
+        public IWebElement TablesTab
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Tables')]")));
+            }
+        }
+        public IWebElement ViewsTab
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Views')]")));
+            }
+        }
+        public IWebElement PermissionsTab => Driver.FindElement(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Permissions')]"));
+        public IWebElement ConnectionTab => Driver.FindElement(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Connection')]"));
+        public IWebElement DataTab => Driver.FindElement(By.XPath("//div[@class='dx-item dx-tab']//span[contains(text(),'Data')]"));
+        public IWebElement CustomStringButton
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".dx-switch-wrapper")));
+            }
+        }
+        public IWebElement ConnectionStringField
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@data-dx_placeholder='Connection String']")));
+            }
+        }
 
         public Connections(IWebDriver driver) : base(driver) { }
 
