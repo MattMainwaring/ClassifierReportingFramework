@@ -94,6 +94,8 @@ namespace FrameworkOne.Tests
             Connections.TestConnection.Click();
             Connections.ViewsTab.Click();
             Assert.AreEqual(Connections.CurrentTab, "VIEWS");
+            Connections.TablesTab.Click();
+            Assert.AreEqual(Connections.CurrentTab, "TABLES");
         }
 
         [TestMethod]
