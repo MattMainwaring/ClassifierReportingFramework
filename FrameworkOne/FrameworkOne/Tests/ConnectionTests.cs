@@ -25,7 +25,6 @@ namespace FrameworkOne.Tests
         {
             Connections.DeleteButton.Click();
             Assert.IsTrue(Connections.DeleteConfirmationMessage.Displayed);   
-
         }
 
         [TestMethod]
@@ -37,7 +36,7 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("")]
+        [Description("Clicks the 'add new connection' button, clicks the 'custom string' slider, asserts that the connection string field is then displayed.")]
         public void CustomStringButton()
         {
             Connections.NewConnectionButton.Click();
@@ -89,6 +88,17 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
+        [Description("")]
+        public void DiscardChangesButton()
+        {
+            Connections.TestConnection.Click();
+            Connections.OrderItemCheckbox.Click();
+            Assert.IsFalse(Connections.AreAllChecked);
+            Connections.DiscardChangesButton.Click();
+            Assert.IsTrue(Connections.AreAllChecked);
+        }
+
+        [TestMethod]
         [Description("Clicks the test connection and asserts that the tabs selected by default are 'data' and 'tables'.")]
         public void CheckDefaultTabs()
         {
@@ -121,5 +131,7 @@ namespace FrameworkOne.Tests
             Connections.DataTab.Click();
             Assert.AreEqual(Connections.CurrentSection, "DATA");
         }
+
+
     }
 }
