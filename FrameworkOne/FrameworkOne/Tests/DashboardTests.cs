@@ -24,7 +24,7 @@ namespace FrameworkOne.Tests
         public void EditTestDashboard()
         {
             Dashboards.TestDashboardEditButton.Click();
-            Assert.IsTrue(Dashboards.TestDashboardEditPageTitle.Displayed);
+            Assert.IsTrue(Dashboards.EditDashboardTagsField.Displayed);
         }
 
         [TestMethod]

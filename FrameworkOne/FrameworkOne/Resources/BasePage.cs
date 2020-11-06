@@ -8,7 +8,7 @@ namespace FrameworkOne
     {
         protected IWebDriver Driver;
 
-        protected WebDriverWait Wait => new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+        protected WebDriverWait Wait => new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
 
         public BasePage(IWebDriver driver)
         {

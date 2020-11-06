@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Threading;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
@@ -21,10 +23,10 @@ namespace FrameworkOne
             {
                 try
                 {
-                    if (Driver.FindElement(By.XPath("//div[@class='dx-datagrid-checkbox-size dx-show-invalid-badge dx-checkbox dx-widget']")).Enabled == true)
+                    Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("devextreme0")));
+                    if (Driver.FindElement(By.XPath("//input[@value='false']")).Enabled == true)
                     {
                         return false;
-                        // We use XPath here because the CssSelector equivalent will find all classes that contain our specified class-name, where-as XPath finds ONLY exact matches.
                     }
                     else
                     {
@@ -89,6 +91,7 @@ namespace FrameworkOne
                 return Driver.FindElements(By.CssSelector(".dx-datagrid-checkbox-size.dx-show-invalid-badge.dx-checkbox.dx-widget"))[4];
             }
         }
+        public IWebElement ServiceCredentialsCheckbox => Driver.FindElement(By.ClassName("dx-checkbox-icon"));
         #endregion
 
         #region tabs
@@ -143,6 +146,22 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementToBeClickable(descField));
             }
         }
+        public IWebElement UsernameField
+        {
+            get
+            {
+                var userField = Driver.FindElements(By.ClassName("dx-texteditor-input"))[3];
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(userField));
+            }
+        }
+        public IWebElement PasswordField
+        {
+            get
+            {
+                var passField = Driver.FindElements(By.ClassName("dx-texteditor-input"))[4];
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(passField));
+            }
+        }
         public IWebElement ConnectionStringField
         {
             get
@@ -150,6 +169,7 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@data-dx_placeholder='Connection String']")));
             }
         }
+
         #endregion
 
         #region buttons
@@ -169,6 +189,7 @@ namespace FrameworkOne
             }
         }
         public IWebElement DiscardChangesButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-edit-button-cancel"));
+        public IWebElement SaveChangesButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-edit-button-save"));
         #endregion
 
         #region misc
@@ -179,7 +200,7 @@ namespace FrameworkOne
                 return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//td[@role='gridcell'][contains(text(),'TestConnection')]")));
             }
         }
-        public IWebElement TestConnectionContent => Driver.FindElement(By.Id("devextreme0"));
+        public IWebElement ConnectionContent => Driver.FindElement(By.Id("devextreme0"));
         public IWebElement DeleteConfirmationMessage
         {
             get
@@ -196,19 +217,63 @@ namespace FrameworkOne
             }
         }
         public IWebElement NameColumn => Driver.FindElement(By.Id("dx-col-1"));
+        public IWebElement ConnectionColumn => Driver.FindElement(By.Id("dx-col-2"));
         public IWebElement SortUpArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-up"));
         public IWebElement SortDownArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-down"));
+        public IWebElement SearchIcon
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".dx-icon.dx-icon-filter-operation-default")));
+            }
+        }
+        public IWebElement SearchField
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@aria-describedby='dx-col-1']")));
+            }
+        }
+        public IWebElement ProductOption
+        {
+            get
+            {
+                // Thread.Sleep is currently the best solution here because there is NO element we can attach an explicit wait to, to know when ONLY search results are being displayed.
+                // This is somewhat brittle because if search results take longer than 1 second to process, the test will always pass (regardless of results).
+                Thread.Sleep(1000);
+                return Driver.FindElement(By.XPath("//td[contains(text(),'Product')]"));
+            }
+        }
+        public IWebElement NoDataResult
+        {
+            get
+            {
+                return Wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".dx-datagrid-nodata")));
+            }
+        }
         #endregion
 
         public Connections(IWebDriver driver) : base(driver) { }
 
-        internal void CreateNewConnection(string name, string server, string database)
+        internal void CreateNewConnection(string name, string server, string database, string user, string pass)
         {
             NewConnectionButton.Click();
             NameField.SendKeys(name);
             ServerField.SendKeys(server);
             DatabaseField.SendKeys(database);
+            ServiceCredentialsCheckbox.Click();
+            UsernameField.SendKeys(user);
+            PasswordField.SendKeys(pass);
             SaveButton.Click();
+        }
+
+        internal void ClickEachCheckbox()
+        {
+            CustomerCheckbox.Click();
+            OrderCheckbox.Click();
+            OrderItemCheckbox.Click();
+            ProductCheckbox.Click();
+            SupplierCheckbox.Click();
         }
 
         internal void GoTo()

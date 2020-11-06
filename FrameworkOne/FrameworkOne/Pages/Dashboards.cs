@@ -17,7 +17,7 @@ namespace FrameworkOne
             }
         }
         public IWebElement TestDashboardEditButton => Driver.FindElement(By.Id("devextreme4"));
-        public IWebElement TestDashboardEditPageTitle => Driver.FindElement(By.XPath("//div[@class='bj-page-header'][contains(text(),'Order Country of Orgin Dashboard')]"));
+        public IWebElement EditDashboardTagsField => Driver.FindElement(By.Id("dashboardMetaTags"));
         public IWebElement CreateDashboardButton => Driver.FindElement(By.ClassName("dx-fa-button-icon"));
         public IWebElement PaletteButton
         {
