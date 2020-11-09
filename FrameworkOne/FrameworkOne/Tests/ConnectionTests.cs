@@ -16,7 +16,7 @@ namespace FrameworkOne.Tests
         [Description("Clicks the test connection and asserts that a connection content page is loaded.")]
         public void ViewTestConnection()
         {
-            Connections.TestConnection.Click();
+            Connections.TestConnectionPanel.Click();
             Assert.IsTrue(Connections.ConnectionContent.Displayed);
         }
 
@@ -73,120 +73,6 @@ namespace FrameworkOne.Tests
             Assert.IsTrue(Connections.LoadingWidget.Displayed);
         }
 
-        [TestMethod]
-        [Description("Clicks the test connection, clicks the 'all' checkbox twice, each time asserting that all checkboxes were checked and not checked.")]
-        public void ClickAllCheckboxInTables()
-        {
-            Connections.TestConnection.Click();
-
-            Connections.AllCheckbox.Click();
-            Assert.IsFalse(Connections.AreAllChecked);
-            Connections.AllCheckbox.Click();
-            Assert.IsTrue(Connections.AreAllChecked);
-        }
-
-        [TestMethod]
-        [Description("Clicks the test connection, clicks the 'all' checkbox, clicks each individual checkbox, asserts they are all checked.")]
-        public void ClickEachCheckboxInTables()
-        {
-            Connections.TestConnection.Click();
-
-            Connections.ClickEachCheckbox();
-            Assert.IsFalse(Connections.AreAllChecked);
-            Connections.ClickEachCheckbox();
-            Assert.IsTrue(Connections.AreAllChecked, "Not all checkboxes were checked.");
-        }
-
-        [TestMethod]
-        [Description("Checks to see if the 'discard changes' button works by un-ticking a checkbox and discarding the change via the 'discard changes' button, whilst asserting each time whether all checkboxes are checked or not.")]
-        public void DiscardChangesButton()
-        {
-            Connections.TestConnection.Click();
-
-            Connections.OrderItemCheckbox.Click();
-            Assert.IsFalse(Connections.AreAllChecked);
-            Connections.DiscardChangesButton.Click();
-            Assert.IsTrue(Connections.AreAllChecked);
-        }
-
-        [TestMethod]
-        [Description("Checks to see if the 'save changes' button works by un-ticking and ticking a checkbox, each time clicking 'save changes', refreshing the page and asserting whether all checkboxes are checked/not checked.")]
-        public void SaveChangesButton()
-        {
-            Connections.TestConnection.Click();
-
-            Connections.SupplierCheckbox.Click();
-            Connections.SaveChangesButton.Click();
-            Driver.Navigate().Refresh();
-            Assert.IsFalse(Connections.AreAllChecked);
-
-            Connections.SupplierCheckbox.Click();
-            Connections.SaveChangesButton.Click();
-            Driver.Navigate().Refresh();
-            Assert.IsTrue(Connections.AreAllChecked);
-        }
-
-        [TestMethod]
-        [Description("Clicks the test connection and asserts that the tabs selected by default are 'data' and 'tables'.")]
-        public void CheckDefaultTabs()
-        {
-            Connections.TestConnection.Click();
-            Assert.AreEqual(Connections.CurrentSection, "DATA");
-            Assert.AreEqual(Connections.CurrentTab, "TABLES");
-        }
-        [TestMethod]
-        [Description("Clicks the test connection, clicks each individual sub-tab (under the data tab), each time asserting that the correct tab was selected.")]
-        public void ClickEachSubTab()
-        {
-            Connections.TestConnection.Click();
-            Connections.ViewsTab.Click();
-            Assert.AreEqual(Connections.CurrentTab, "VIEWS");
-            Connections.ProceduresTab.Click();
-            Assert.AreEqual(Connections.CurrentTab, "PROCEDURES");
-            Connections.TablesTab.Click();
-            Assert.AreEqual(Connections.CurrentTab, "TABLES");
-        }
-
-        [TestMethod]
-        [Description("Clicks the test connection, clicks each individual upper-tab, each time asserting that the correct tab was selected.")]
-        public void ClickEachUpperTab ()
-        {
-            Connections.TestConnection.Click();
-            Connections.PermissionsTab.Click();
-            Assert.AreEqual(Connections.CurrentSection, "PERMISSIONS");
-            Connections.ConnectionTab.Click();
-            Assert.AreEqual(Connections.CurrentSection, "CONNECTION");
-            Connections.DataTab.Click();
-            Assert.AreEqual(Connections.CurrentSection, "DATA");
-        }
-
-        [TestMethod]
-        [Description("Clicks the test connection, clicks the search field, searches for a specific string, asserts that the element we are expecting is displayed once the search has completed.")]
-        public void SearchFieldResults()
-        {
-            Connections.TestConnection.Click();
-            Connections.SearchField.Click();
-            Connections.SearchField.SendKeys("product");
-            Assert.IsTrue(Connections.ProductOption.Displayed); // check ProductOption for more info
-        }
-
-        [TestMethod]
-        [Description("Clicks the test connection, clicks the search field, searches for a specific string (that we know there are no results for), asserts that no 'no data' result is displayed once the search has completed.")]
-        public void SearchFieldNoResults()
-        {
-            Connections.TestConnection.Click();
-            Connections.SearchField.Click();
-            Connections.SearchField.SendKeys("no result");
-            Assert.IsTrue(Connections.NoDataResult.Displayed);
-        }
-
-        [TestMethod]
-        [Description("")]
-        public void RenameMe()
-        {
-            Connections.TestConnection.Click();
-            Connections.SearchIcon.Click();
-            
-        }
+        
     }
 }

@@ -2,9 +2,9 @@
 using OpenQA.Selenium;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace FrameworkOne
+namespace FrameworkOne.Pages
 {
-    public class Reports : BasePage
+    public class ReportsPage : BasePage
     {
         public bool IsLoaded
         {
@@ -50,7 +50,7 @@ namespace FrameworkOne
         }
 
 
-        public Reports(IWebDriver driver) : base(driver) { }
+        public ReportsPage(IWebDriver driver) : base(driver) { }
 
         internal void GoTo()
         {

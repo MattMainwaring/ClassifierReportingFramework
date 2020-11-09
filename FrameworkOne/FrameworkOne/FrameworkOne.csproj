@@ -63,14 +63,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\Users.cs" />
+    <Compile Include="Pages\TestConnectionPage.cs" />
+    <Compile Include="Pages\UsersPage.cs" />
     <Compile Include="Resources\BasePage.cs" />
-    <Compile Include="Pages\Connections.cs" />
-    <Compile Include="Pages\Dashboards.cs" />
-    <Compile Include="Pages\Home.cs" />
-    <Compile Include="Pages\Packs.cs" />
-    <Compile Include="Pages\Reports.cs" />
-    <Compile Include="Pages\Roles.cs" />
+    <Compile Include="Pages\ConnectionsPage.cs" />
+    <Compile Include="Pages\DashboardsPage.cs" />
+    <Compile Include="Pages\HomePage.cs" />
+    <Compile Include="Pages\PacksPage.cs" />
+    <Compile Include="Pages\ReportsPage.cs" />
+    <Compile Include="Pages\RolesPage.cs" />
     <Compile Include="Resources\BrowserType.cs" />
     <Compile Include="Resources\BaseTest.cs" />
     <Compile Include="Tests\ConnectionTests.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Tests\ReportTests.cs" />
     <Compile Include="Tests\RoleTests.cs" />
     <Compile Include="Resources\WebDriverFactory.cs" />
+    <Compile Include="Tests\TestConnectionTests.cs" />
     <Compile Include="Tests\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>

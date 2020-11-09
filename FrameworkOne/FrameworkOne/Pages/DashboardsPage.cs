@@ -2,9 +2,9 @@
 using OpenQA.Selenium;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace FrameworkOne
+namespace FrameworkOne.Pages
 {
-    public class Dashboards : BasePage
+    public class DashboardsPage : BasePage
     {
         public bool IsLoaded => Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("bj-dashboards-Container"))).Displayed;
         public IWebElement HomeIcon => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-home']"));
@@ -30,7 +30,7 @@ namespace FrameworkOne
         public IWebElement ExpandedTagFilterBar => Driver.FindElement(By.ClassName("dx-popup-content"));
         public IWebElement CloseMenuButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-close"));
 
-        public Dashboards(IWebDriver driver) : base(driver) { }
+        public DashboardsPage(IWebDriver driver) : base(driver) { }
 
         internal void GoTo()
         {

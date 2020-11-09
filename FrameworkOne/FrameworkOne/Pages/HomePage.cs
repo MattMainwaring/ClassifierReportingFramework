@@ -2,9 +2,9 @@
 using OpenQA.Selenium;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace FrameworkOne
+namespace FrameworkOne.Pages
 {
-    public class Home : BasePage
+    public class HomePage : BasePage
     {
         public bool IsLoaded
         {
@@ -30,7 +30,7 @@ namespace FrameworkOne
         public IWebElement AccountButton => Driver.FindElement(By.ClassName("dx-button-text"));
         public IWebElement LogOutButton => Driver.FindElement(By.XPath("//*[@class='dx-item-content dx-list-item-content'][contains(text(),'Logout')]"));
 
-        public Home(IWebDriver driver) :base(driver) { }
+        public HomePage(IWebDriver driver) :base(driver) { }
 
         internal void GoTo()
         {

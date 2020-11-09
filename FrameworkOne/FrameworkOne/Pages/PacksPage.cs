@@ -2,9 +2,9 @@
 using OpenQA.Selenium;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace FrameworkOne
+namespace FrameworkOne.Pages
 {
-    public class Packs : BasePage
+    public class PacksPage : BasePage
     {
         public bool IsLoaded
         {
@@ -54,7 +54,7 @@ namespace FrameworkOne
         public IWebElement SortUpArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-up"));
         public IWebElement SortDownArrow => Driver.FindElement(By.CssSelector(".dx-sort.dx-sort-down"));
 
-        public Packs(IWebDriver driver) : base(driver) { }
+        public PacksPage(IWebDriver driver) : base(driver) { }
 
         internal void GoTo()
         {

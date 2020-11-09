@@ -4,9 +4,9 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace FrameworkOne
+namespace FrameworkOne.Pages
 {
-    public class Roles : BasePage
+    public class RolesPage : BasePage
     {
         public bool IsLoaded
         {
@@ -51,7 +51,7 @@ namespace FrameworkOne
         public IWebElement NewRoleButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-add']"));
         public IWebElement NewRoleMenuHeader => Driver.FindElement(By.XPath("//div[contains(text(),'New Role')]"));
 
-        public Roles(IWebDriver driver) : base(driver) { }
+        public RolesPage(IWebDriver driver) : base(driver) { }
 
         internal void GoTo()
         {

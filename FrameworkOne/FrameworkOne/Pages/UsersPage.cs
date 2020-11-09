@@ -2,9 +2,9 @@
 using OpenQA.Selenium;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace FrameworkOne
+namespace FrameworkOne.Pages
 {
-    public class Users : BasePage
+    public class UsersPage : BasePage
     {
         public bool IsLoaded => Driver.FindElement(By.Id("userList")).Displayed;
         public IWebElement UserAdministrator => Driver.FindElement(By.XPath("//td[contains(text(),'administrator')]"));
@@ -29,7 +29,7 @@ namespace FrameworkOne
             }
         }
 
-        public Users(IWebDriver driver) : base(driver) { }
+        public UsersPage(IWebDriver driver) : base(driver) { }
 
         internal void GoTo()
         {
