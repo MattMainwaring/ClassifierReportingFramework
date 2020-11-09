@@ -112,6 +112,8 @@ namespace FrameworkOne.Pages
         public IWebElement SaveChangesButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-edit-button-save"));
         public IWebElement DoesNotContainButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-not-contains"));
         public IWebElement StartsWithButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-starts-with"));
+        public IWebElement EndsWithButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-ends-with"));
+        public IWebElement EqualsButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-equals"));
         #endregion
 
         #region misc

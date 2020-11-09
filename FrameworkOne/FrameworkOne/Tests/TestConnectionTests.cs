@@ -101,7 +101,7 @@ namespace FrameworkOne.Tests
 
         // SearchField Tests
         // Thread.Sleep is currently the best solution here because there is NO element we can attach an explicit wait to, to know when ONLY search results are being displayed.
-        // This is somewhat brittle because if search results take longer than 1 second to process, the test will always pass (regardless of results).
+        // This is somewhat brittle because if search results take longer than 1 second to process, the test will always give a false positive or negative (depending which test) regardless of results.
         [TestMethod]
         [Description("Clicks the search field, searches for a specific string, asserts that the element we are expecting is displayed once the search has completed.")]
         public void SearchContains()
@@ -120,9 +120,9 @@ namespace FrameworkOne.Tests
             TestConnection.DoesNotContainButton.Click();
             TestConnection.SearchField.SendKeys("order");
             Thread.Sleep(1000);
-            Assert.IsTrue(TestConnection.CustomerPanel.Displayed &&
-                          TestConnection.ProductPanel.Displayed &&
-                          TestConnection.SupplierPanel.Displayed);
+            Assert.IsTrue(TestConnection.CustomerPanel.Displayed
+                && TestConnection.ProductPanel.Displayed
+                && TestConnection.SupplierPanel.Displayed);
             Assert.AreEqual(TestConnection.NumberOfSearchResults(), "3");
         }
 
@@ -139,10 +139,31 @@ namespace FrameworkOne.Tests
         }
 
         [TestMethod]
-        [Description("")]
+        [Description("Clicks the search icon, clicks the 'ends with' button, types in 'er', asserts that all results that end with 'er' are displayed and that the total number of results is 3.")]
         public void SearchEndsWith()
         {
-
+            TestConnection.SearchIcon.Click();
+            TestConnection.EndsWithButton.Click();
+            TestConnection.SearchField.SendKeys("er");
+            Thread.Sleep(1000);
+            Assert.IsTrue(TestConnection.CustomerPanel.Displayed
+                && TestConnection.OrderPanel.Displayed
+                && TestConnection.SupplierPanel.Displayed);
+            Assert.AreEqual(TestConnection.NumberOfSearchResults(), "3");
         }
+
+        [TestMethod]
+        [Description("")]
+        public void SearchEquals()
+        {
+            TestConnection.SearchIcon.Click();
+            TestConnection.EqualsButton.Click();
+            TestConnection.SearchField.SendKeys("order");
+            Thread.Sleep(1000);
+            Assert.IsTrue(TestConnection.OrderPanel.Displayed);
+            Assert.AreEqual(TestConnection.NumberOfSearchResults(), "1");
+        }
+
+
     }
 }
