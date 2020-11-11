@@ -26,9 +26,9 @@ namespace FrameworkOne.Pages
         public IWebElement DashboardsButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-hierarchy']"));
         public IWebElement ConnectionsButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-link']"));
         public IWebElement ReportsButton => Driver.FindElement(By.XPath("//i[@class='dx-icon dx-icon-contentlayout']"));
-        public IWebElement MenuButton => Driver.FindElement(By.XPath("//div[@class='dx-button-content']"));
+        public IWebElement MenuButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-menu"));
         public IWebElement AccountButton => Driver.FindElement(By.ClassName("dx-button-text"));
-        public IWebElement LogOutButton => Driver.FindElement(By.XPath("//*[@class='dx-item-content dx-list-item-content'][contains(text(),'Logout')]"));
+        public IWebElement LogOutButton => Driver.FindElement(By.CssSelector("div[title='Logout']"));
 
         public HomePage(IWebDriver driver) :base(driver) { }
 

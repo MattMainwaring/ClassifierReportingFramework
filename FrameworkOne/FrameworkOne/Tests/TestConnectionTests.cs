@@ -164,6 +164,21 @@ namespace FrameworkOne.Tests
             Assert.AreEqual(TestConnection.NumberOfSearchResults(), "1");
         }
 
+        [TestMethod]
+        [Description("")]
+        public void SearchNotEqual()
+        {
+            TestConnection.SearchIcon.Click();
+            TestConnection.NotEqualButton.Click();
+            TestConnection.SearchField.SendKeys("product");
+            Thread.Sleep(1000);
+            Assert.IsTrue(TestConnection.CustomerPanel.Displayed
+                && TestConnection.OrderPanel.Displayed
+                && TestConnection.OrderItemPanel.Displayed
+                && TestConnection.SupplierPanel.Displayed);
+            Assert.AreEqual(TestConnection.NumberOfSearchResults(), "4");
+        }
+
 
     }
 }

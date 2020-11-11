@@ -114,6 +114,7 @@ namespace FrameworkOne.Pages
         public IWebElement StartsWithButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-starts-with"));
         public IWebElement EndsWithButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-ends-with"));
         public IWebElement EqualsButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-equals"));
+        public IWebElement NotEqualButton => Driver.FindElement(By.CssSelector(".dx-icon.dx-icon-filter-operation-not-equals"));
         #endregion
 
         #region misc
